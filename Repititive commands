@@ -1,0 +1,14 @@
+# connect the remote GitHub repo with your local project
+git remote add origin [github-repo-url]
+
+# see untracked files
+git status
+
+# add all untracked files to the staging area
+git add .
+
+# commit the tracked files of the staging area
+git commit -m "commit-msg"
+
+# push all the changes to the GitHub
+git push -u origin master
