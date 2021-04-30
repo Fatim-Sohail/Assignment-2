@@ -1,0 +1,49 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Mar 13 14:43:34 2021
+
+@author: jiya
+"""
+
+annual__salary = input("Salary: ")
+semi_annual_raise = 0.07
+r = 0.04
+Total_cost = 1000000
+down_payment = 0.25 * Total_cost
+high = 10000
+low = 0
+epsilon = 100
+steps = 0
+Monnths = 36
+Possibility = True
+best = high
+while True:    
+    annual_salary = int(annual__salary)
+    guess = best / 10000
+    current_savings = 0.0
+    months = 0
+    monthly_saving = (annual_salary / 12) * guess        
+    while months < Monnths:
+        current_savings += monthly_saving + ((current_savings * r) / 12)
+        months += 1
+        if months % 6 == 0:
+            annual_salary += annual_salary * semi_annual_raise
+            monthly_saving = (annual_salary / 12) * guess
+    if current_savings > down_payment:
+       high = best
+    else:
+       low = best
+           
+    if low >= high :
+       Possibility= False
+       break
+    if abs(current_savings - down_payment) <= epsilon:
+        break
+    best = (high + low) // 2     
+    steps += 1
+if Possibility:
+    print("Best savings rate:" + str(guess))
+    print("Steps in bisection search:" + str(steps))
+else:
+    print('It is not possible to pay the down payment in three years.')
+    
