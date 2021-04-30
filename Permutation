@@ -1,0 +1,40 @@
+ # Problem Set 4A
+# Name: Fatima Sohail Shaukat
+
+
+def permutation(a):
+    if len(a) == 0:
+        return []
+    elif len(a) == 1:
+        return [a]
+    else:
+        perm =  []
+        for i in range(len(a)):
+            x = a[i]
+            l = a[:i] + a[i+1:]
+            for p in permutation(l):
+                perm.append(x+p)
+        return perm
+
+print(permutation("abc"))   
+        
+
+   # Example:
+   # >>> get_permutations('abc')
+   # ['abc', 'acb', 'bac', 'bca', 'cab', 'cba']
+
+
+  
+
+if __name__ == '__main__':
+#    #EXAMPLE
+   # example_input = 'abc'
+   # print('Input:', example_input)
+   # print('Expected Output:', ['abc', 'acb', 'bac', 'bca', 'cab', 'cba'])
+   # print('Actual Output:', permutation(example_input))
+    
+#    # Put three example test cases here (for your sanity, limit your inputs
+#    to be three characters or fewer as you will have n! permutations for a 
+#    sequence of length n)
+
+    pass
